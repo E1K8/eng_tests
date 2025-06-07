@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz for wife ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .quiz-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .option {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .option.selected {
+            border-color: #3498db;
+            background-color: #e1f0fa;
+        }
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 0.95em;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f4f8;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            display: none;
+        }
+        .check-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        .score {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi!^-^</h1>
+    <div id="quiz-container"></div>
+    <button id="check-btn" class="check-btn">Cheeeeeck</button>
+    <div id="results" class="results"></div>
+
+    <script>
+        // Словарь для тестирования (русский -> английский)
+        const wordPairs = [
+            { sentans: "The meteorologist's accurate weather __ enabled the farmers to safeguard their crops against the impending storm.", option: "forecast" },
+            { sentans: "Sensing the rising tension, she deftly attempted to __ the conversation from the controversial topic, steering it towards lighter subjects.", option: "distract" },
+            { sentans: "Details of the __ intelligence operation were so closely guarded that even high-ranking officials were kept in the dark.", option: "spy" },
+            { sentans: "Before dispatching the confidential letter, he meticulously sealed it in a plain, unmarked__", option: "envelope" },           
+            { sentans: "Thanks to the region's temperate __ and abundant sunlight, it has become renowned for producing premium quality grapes.", option: "climate" },
+            { sentans: "In the heart of a bustling city, a __ (spy/forecast) operation was underway. Agents worked tirelessly, their every move calculated to avoid detection.", option: "spy" },
+            { sentans: "The mission __ (requirement/climate) was clear: retrieve a top-secret document hidden in a government office.", option: "requirement" },
+            { sentans: "One agent, tasked with the final leg of the operation, carefully placed the document in an __ (envelope/blank) and made his way to the extraction point.", option: "envelope" },
+            { sentans: "Along the way, he had to __ (distract/avoid) numerous obstacles, including surveillance cameras and patrolling guards.", option: "Avoid " },
+            { sentans: "His training kicked in, allowing him to __ (execute/lamb) the plan flawlessly and complete the mission.", option: "Execute " },
+        ];
+
+        // Переменные для отслеживания состояния
+        let userAnswers = {};
+        let quizSubmitted = false;
+
+        // Элементы DOM
+        const quizContainer = document.getElementById('quiz-container');
+        const checkButton = document.getElementById('check-btn');
+        const resultsElement = document.getElementById('results');
+
+        // Функция для создания теста
+        function createQuiz() {
+            quizContainer.innerHTML = '';
+            
+            wordPairs.forEach((pair, index) => {
+                const quizItem = document.createElement('div');
+                quizItem.className = 'quiz-item';
+                quizItem.dataset.index = index;
+                
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.textContent = `${index + 1}."${pair.sentans}"?`;
+                
+                const optionsElement = document.createElement('div');
+                optionsElement.className = 'options';
+                
+                // Собираем варианты ответов
+                let options = [pair.option];
+                while (options.length < 4) {
+                    const randomIndex = Math.floor(Math.random() * wordPairs.length);
+                    const randomWord = wordPairs[randomIndex].option;
+                    if (!options.includes(randomWord)) {
+                        options.push(randomWord);
+                    }
+                }
+                
+                // Перемешиваем варианты
+                options = shuffleArray(options);
+                
+                // Создаем элементы вариантов
+                options.forEach(option => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.textContent = option;
+                    optionElement.addEventListener('click', () => selectOption(optionElement, index, option));
+                    optionsElement.appendChild(optionElement);
+                });
+                
+                // Создаем элемент для обратной связи
+                const feedbackElement = document.createElement('div');
+                feedbackElement.className = 'feedback';
+                feedbackElement.id = `feedback-${index}`;
+                
+                quizItem.appendChild(questionElement);
+                quizItem.appendChild(optionsElement);
+                quizItem.appendChild(feedbackElement);
+                quizContainer.appendChild(quizItem);
+            });
+        }
+
+        // Функция для выбора варианта ответа
+        function selectOption(optionElement, questionIndex, option) {
+            if (quizSubmitted) return;
+            
+            // Убираем выделение с других вариантов этого вопроса
+            const quizItem = optionElement.closest('.quiz-item');
+            const allOptions = quizItem.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Выделяем выбранный вариант
+            optionElement.classList.add('selected');
+            
+            // Сохраняем ответ пользователя
+            userAnswers[questionIndex] = option;
+        }
+
+        // Функция для проверки всех ответов
+        function checkAllAnswers() {
+            if (quizSubmitted) return;
+            
+            quizSubmitted = true;
+            let correctCount = 0;
+            
+            wordPairs.forEach((pair, index) => {
+                const userAnswer = userAnswers[index];
+                const correctAnswer = pair.option;
+                const feedbackElement = document.getElementById(`feedback-${index}`);
+                const quizItem = document.querySelector(`.quiz-item[data-index="${index}"]`);
+                const allOptions = quizItem.querySelectorAll('.option');
+                
+                // Находим и подсвечиваем правильный ответ
+                allOptions.forEach(option => {
+                    if (option.textContent === correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                // Проверяем ответ пользователя
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedbackElement.textContent = 'Right!';
+                    feedbackElement.className = 'feedback correct';
+                } else if (userAnswer) {
+                    feedbackElement.textContent = `Uncorect! The corect ansver is: ${correctAnswer}`;
+                    feedbackElement.className = 'feedback incorrect';
+                    
+                    // Подсвечиваем неправильный ответ пользователя
+                    allOptions.forEach(option => {
+                        if (option.textContent === userAnswer) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    feedbackElement.textContent = `The correct ansver is: ${correctAnswer}`;
+                    feedbackElement.className = 'feedback incorrect';
+                }
+            });
+            
+            // Показываем результаты
+            showResults(correctCount);
+        }
+
+        // Функция для отображения результатов
+        function showResults(correctCount) {
+            const percentage = Math.round((correctCount / wordPairs.length) * 100);
+            let message = '';
+            
+            if (percentage === 100) {
+                message = 'Well Well Well my kitten ^-^';
+            } else if (percentage >= 80) {
+                message = "That's great! Kiiis u";
+            } else if (percentage >= 60) {
+                message = 'A bit practice will hellp🤗';
+            } else {
+                message = 'Try again, люблю тебя❤️';
+            }
+            
+            resultsElement.innerHTML = `
+                <div class="score">${correctCount} from ${wordPairs.length} of corect answers (${percentage}%)</div>
+                <p>${message}</p>
+            `;
+            resultsElement.style.display = 'block';
+            
+            // Прокручиваем страницу к результатам
+            resultsElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Функция для перемешивания массива
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Обработчик для кнопки проверки
+        checkButton.addEventListener('click', checkAllAnswers);
+
+        // Создаем тест при загрузке страницы
+        createQuiz();
+    </script>
+</body>
+</html>
