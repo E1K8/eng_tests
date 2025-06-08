@@ -114,17 +114,130 @@
     <script>
         // Словарь для тестирования (русский -> английский)
         const wordPairs = [
-            { sentans: "The meteorologist's accurate weather __ enabled the farmers to safeguard their crops against the impending storm.", option: "forecast" },
-            { sentans: "Sensing the rising tension, she deftly attempted to __ the conversation from the controversial topic, steering it towards lighter subjects.", option: "distract" },
-            { sentans: "Details of the __ intelligence operation were so closely guarded that even high-ranking officials were kept in the dark.", option: "spy" },
-            { sentans: "Before dispatching the confidential letter, he meticulously sealed it in a plain, unmarked__", option: "envelope" },           
-            { sentans: "Thanks to the region's temperate __ and abundant sunlight, it has become renowned for producing premium quality grapes.", option: "climate" },
-            { sentans: "In the heart of a bustling city, a __ operation was underway. Agents worked tirelessly, their every move calculated to avoid detection.", option: "spy" },
-            { sentans: "The mission __ was clear: retrieve a top-secret document hidden in a government office.", option: "requirement" },
-            { sentans: "One agent, tasked with the final leg of the operation, carefully placed the document in an __ and made his way to the extraction point.", option: "envelope" },
-            { sentans: "Along the way, he had to __ numerous obstacles, including surveillance cameras and patrolling guards.", option: "Avoid " },
-            { sentans: "His training kicked in, allowing him to __ the plan flawlessly and complete the mission.", option: "Execute " },
-        ];
+            {
+            "sentans": "The old library is going to be __ to make it more modern and functional.",
+            "option": "renovated"
+            },
+            {
+            "sentans": "They plan to __ the historic building while preserving its original features.",
+            "option": "renovate"
+            },
+            {
+            "sentans": "Please __ the stain on the table with a cloth gently.",
+            "option": "rub"
+            },
+            {
+            "sentans": "Don't __ your eyes too hard when they feel itchy; it might hurt them.",
+            "option": "rub"
+            },
+            {
+            "sentans": "The __ election in the country will attract worldwide attention.",
+            "option": "presidential"
+            },
+            {
+            "sentans": "There will be a series of __ ceremonies to celebrate the new leader's taking office.",
+            "option": "presidential"
+            },
+            {
+            "sentans": "She bought a new __ to cook delicious noodles.",
+            "option": "pan"
+            },
+            {
+            "sentans": "The chef used a large __ to fry the chicken pieces.",
+            "option": "pan"
+            },
+            {
+            "sentans": "You should finish your homework on time; __, you'll be punished.",
+            "option": "otherwise"
+            },
+            {
+            "sentans": "Study hard now, __ you won't be able to pass the exam.",
+            "option": "otherwise"
+            },
+            {
+            "sentans": "His __ to help made us very disappointed.",
+            "option": "refusal"
+            },
+            {
+            "sentans": "The company announced its __ of the unfair contract.",
+            "option": "refusal"
+            },
+            {
+            "sentans": "Fishermen use a __ to catch fish in the river.",
+            "option": "net"
+            },
+            {
+            "sentans": "The tennis player hit the ball over the __ and scored a point.",
+            "option": "net"
+            },
+            {
+            "sentans": "In education, __ schools provide education after primary school.",
+            "option": "secondary"
+            },
+            {
+            "sentans": "The __ cause of the problem is not as important as the main one.",
+            "option": "secondary"
+            },
+            {
+            "sentans": "I'd like a glass of __ water with ice, please.",
+            "option": "soda"
+            },
+            {
+            "sentans": "Many people enjoy drinking __ with their meals, especially hamburgers.",
+            "option": "soda"
+            },
+            {
+            "sentans": "She has a great talent for __ instruments, like the piano and violin.",
+            "option": "musical"
+            },
+            {
+            "sentans": "The __ performance last night was really amazing, with beautiful songs and dances.",
+            "option": "musical"
+            },
+            {
+            "sentans": "The project is now in the final __ of development.",
+            "option": "phase"
+            },
+            {
+            "sentans": "We need to plan each __ of the marketing campaign carefully.",
+            "option": "phase"
+            },
+            {
+            "sentans": "Can you tell me the __ time of the train's arrival?",
+            "option": "exact"
+            },
+            {
+            "sentans": "The __ number of participants in the event is 500, not more or less.",
+            "option": "exact"
+            },
+            {
+            "sentans": "She made a big __ of a new house in the city center.",
+            "option": "purchase"
+            },
+            {
+            "sentans": "The company's recent __ of a small factory will help expand its business.",
+            "option": "purchase"
+            },
+            {
+            "sentans": "Farmers __ seeds in the field in spring to get a good harvest.",
+            "option": "sow"
+            },
+            {
+            "sentans": "It's the right time to __ wheat seeds before the rainy season comes.",
+            "option": "sow"
+            },
+            {
+            "sentans": "The destruction of the natural __ has led to the decline of many animal species.",
+            "option": "habitat"
+            },
+            {
+            "sentans": "Protecting the __ of wild birds is crucial for their survival.",
+            "option": "habitat"
+            },
+            {
+            "sentans": "The weather is so __ today, with dark clouds and no sunshine.",
+            "option": "gloomy"
+            }];
 
         // Переменные для отслеживания состояния
         let userAnswers = {};
