@@ -3,269 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz for wife ❤️</title>
+    <title>Vocabulary Quiz for My Love ❤️</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            background-color: #f5f5f5;
         }
         h1 {
             text-align: center;
-            color: #2c3e50;
+            color: #e91e63;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        .quiz-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #673ab7;
+            border-bottom: 2px solid #673ab7;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
         }
         .quiz-item {
             margin-bottom: 25px;
-            padding: 15px;
+            padding: 20px;
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+            border-radius: 10px;
+            background-color: #fafafa;
+            transition: all 0.3s;
+        }
+        .quiz-item:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .question {
             font-weight: bold;
             font-size: 1.1em;
-            margin-bottom: 10px;
-            color: #2c3e50;
+            margin-bottom: 15px;
+            color: #333;
         }
         .options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
         .option {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s;
+            text-align: center;
         }
         .option:hover {
             background-color: #f0f0f0;
+            border-color: #bbb;
         }
         .option.selected {
-            border-color: #3498db;
-            background-color: #e1f0fa;
+            border-color: #2196f3;
+            background-color: #e3f2fd;
+            font-weight: bold;
         }
         .option.correct {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
+            background-color: #c8e6c9;
+            border-color: #81c784;
+            color: #2e7d32;
         }
         .option.incorrect {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24;
+            background-color: #ffcdd2;
+            border-color: #e57373;
+            color: #c62828;
         }
         .feedback {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 0.95em;
-            padding: 8px 12px;
-            border-radius: 4px;
+            padding: 12px;
+            border-radius: 6px;
             display: none;
         }
         .feedback.correct {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #c8e6c9;
+            color: #2e7d32;
             display: block;
         }
         .feedback.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: #ffebee;
+            color: #c62828;
             display: block;
+        }
+        .chinese {
+            display: block;
+            margin-top: 8px;
+            font-style: italic;
+            color: #666;
         }
         .results {
             margin-top: 30px;
-            padding: 20px;
+            padding: 25px;
             background-color: #e8f4f8;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
             font-size: 1.2em;
             display: none;
+            border: 2px solid #bbdefb;
         }
         .check-btn {
             display: block;
             margin: 30px auto;
-            padding: 12px 25px;
-            background-color: #3498db;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #e91e63, #9c27b0);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 30px;
             font-size: 1.1em;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .check-btn:hover {
-            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .score {
             font-weight: bold;
-            margin-top: 5px;
+            margin-top: 10px;
+            font-size: 1.3em;
+            color: #2196f3;
+        }
+        .emoji-result {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            transition: width 0.5s;
         }
     </style>
 </head>
 <body>
-    <h1>Hi!^-^</h1>
-    <div id="quiz-container"></div>
-    <button id="check-btn" class="check-btn">Cheeeeeck</button>
-    <div id="results" class="results"></div>
+    <h1>Vocabulary Quiz for My Love ❤️</h1>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Basic Vocabulary</h2>
+        <div id="basic-quiz-container"></div>
+    </div>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Advanced Vocabulary</h2>
+        <div id="advanced-quiz-container"></div>
+    </div>
+    
+    <button id="check-btn" class="check-btn">Check My Answers</button>
+    
+    <div id="results" class="results">
+        <div id="emoji-result" class="emoji-result"></div>
+        <div id="score-text" class="score"></div>
+        <div id="message-text"></div>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
 
     <script>
-        // Словарь для тестирования (русский -> английский)
+        // Enhanced word pairs with Chinese explanations
         const wordPairs = [
+            // Basic vocabulary
             {
-            "sentans": "The old library is going to be __ to make it more modern and functional.",
-            "option": "renovated"
+                "sentence": "She poured a glass of ______ for her guest.",
+                "option": "alcohol",
+                "chinese": "酒精或含酒精的饮料"
             },
             {
-            "sentans": "They plan to __ the historic building while preserving its original features.",
-            "option": "renovate"
+                "sentence": "I really ______ your help with this project.",
+                "option": "appreciate",
+                "chinese": "感激或欣赏"
             },
             {
-            "sentans": "Please __ the stain on the table with a cloth gently.",
-            "option": "rub"
+                "sentence": "He wiped the sweat from his ______ after running.",
+                "option": "brow",
+                "chinese": "眉毛或额头"
             },
             {
-            "sentans": "Don't __ your eyes too hard when they feel itchy; it might hurt them.",
-            "option": "rub"
+                "sentence": "She felt a sharp pain in her ______ after coughing.",
+                "option": "chest",
+                "chinese": "胸部"
             },
             {
-            "sentans": "The __ election in the country will attract worldwide attention.",
-            "option": "presidential"
+                "sentence": "Climate change is a major global ______.",
+                "option": "concern",
+                "chinese": "担忧或关注的问题"
+            },
+            // Advanced vocabulary
+            {
+                "sentence": "The scientist's ______ in genetics earned her recognition.",
+                "option": "expertise",
+                "chinese": "专业知识或技能"
             },
             {
-            "sentans": "There will be a series of __ ceremonies to celebrate the new leader's taking office.",
-            "option": "presidential"
+                "sentence": "The ancient ______ was perfectly preserved in the museum.",
+                "option": "fossil",
+                "chinese": "化石"
             },
             {
-            "sentans": "She bought a new __ to cook delicious noodles.",
-            "option": "pan"
+                "sentence": "The volcano's ______ covered the town in ash.",
+                "option": "eruption",
+                "chinese": "喷发"
             },
             {
-            "sentans": "The chef used a large __ to fry the chicken pieces.",
-            "option": "pan"
+                "sentence": "She felt a ______ of excitement before the performance.",
+                "option": "thrill",
+                "chinese": "一阵激动或兴奋"
             },
             {
-            "sentans": "You should finish your homework on time; __, you'll be punished.",
-            "option": "otherwise"
+                "sentence": "The ______ of the forest at night was eerie.",
+                "option": "silence",
+                "chinese": "寂静"
+            },
+            // More words from your list
+            {
+                "sentence": "The ______ of the study showed a clear trend.",
+                "option": "statistics",
+                "chinese": "统计数据"
             },
             {
-            "sentans": "Study hard now, __ you won't be able to pass the exam.",
-            "option": "otherwise"
+                "sentence": "His speech was met with ______ from the audience.",
+                "option": "indifference",
+                "chinese": "冷漠"
             },
             {
-            "sentans": "His __ to help made us very disappointed.",
-            "option": "refusal"
+                "sentence": "The lawyer's argument was ______ and convincing.",
+                "option": "penetrating",
+                "chinese": "尖锐的、深刻的"
             },
             {
-            "sentans": "The company announced its __ of the unfair contract.",
-            "option": "refusal"
+                "sentence": "The ______ of the novel was its exploration of human nature.",
+                "option": "essence",
+                "chinese": "本质或核心"
             },
             {
-            "sentans": "Fishermen use a __ to catch fish in the river.",
-            "option": "net"
-            },
-            {
-            "sentans": "The tennis player hit the ball over the __ and scored a point.",
-            "option": "net"
-            },
-            {
-            "sentans": "In education, __ schools provide education after primary school.",
-            "option": "secondary"
-            },
-            {
-            "sentans": "The __ cause of the problem is not as important as the main one.",
-            "option": "secondary"
-            },
-            {
-            "sentans": "I'd like a glass of __ water with ice, please.",
-            "option": "soda"
-            },
-            {
-            "sentans": "Many people enjoy drinking __ with their meals, especially hamburgers.",
-            "option": "soda"
-            },
-            {
-            "sentans": "She has a great talent for __ instruments, like the piano and violin.",
-            "option": "musical"
-            },
-            {
-            "sentans": "The __ performance last night was really amazing, with beautiful songs and dances.",
-            "option": "musical"
-            },
-            {
-            "sentans": "The project is now in the final __ of development.",
-            "option": "phase"
-            },
-            {
-            "sentans": "We need to plan each __ of the marketing campaign carefully.",
-            "option": "phase"
-            },
-            {
-            "sentans": "Can you tell me the __ time of the train's arrival?",
-            "option": "exact"
-            },
-            {
-            "sentans": "The __ number of participants in the event is 500, not more or less.",
-            "option": "exact"
-            },
-            {
-            "sentans": "She made a big __ of a new house in the city center.",
-            "option": "purchase"
-            },
-            {
-            "sentans": "The company's recent __ of a small factory will help expand its business.",
-            "option": "purchase"
-            },
-            {
-            "sentans": "Farmers __ seeds in the field in spring to get a good harvest.",
-            "option": "sow"
-            },
-            {
-            "sentans": "It's the right time to __ wheat seeds before the rainy season comes.",
-            "option": "sow"
-            },
-            {
-            "sentans": "The destruction of the natural __ has led to the decline of many animal species.",
-            "option": "habitat"
-            },
-            {
-            "sentans": "Protecting the __ of wild birds is crucial for their survival.",
-            "option": "habitat"
-            },
-            {
-            "sentans": "The weather is so __ today, with dark clouds and no sunshine.",
-            "option": "gloomy"
-            }];
+                "sentence": "The committee will ______ over the meeting tomorrow.",
+                "option": "preside",
+                "chinese": "主持"
+            }
+        ];
 
-        // Переменные для отслеживания состояния
+        // Split into basic and advanced vocabulary
+        const basicVocabulary = wordPairs.slice(0, 5);
+        const advancedVocabulary = wordPairs.slice(5);
+
+        // Quiz state variables
         let userAnswers = {};
         let quizSubmitted = false;
 
-        // Элементы DOM
-        const quizContainer = document.getElementById('quiz-container');
+        // DOM elements
+        const basicQuizContainer = document.getElementById('basic-quiz-container');
+        const advancedQuizContainer = document.getElementById('advanced-quiz-container');
         const checkButton = document.getElementById('check-btn');
         const resultsElement = document.getElementById('results');
+        const emojiResult = document.getElementById('emoji-result');
+        const scoreText = document.getElementById('score-text');
+        const messageText = document.getElementById('message-text');
+        const progressBar = document.getElementById('progress-bar');
 
-        // Функция для создания теста
+        // Create quiz sections
         function createQuiz() {
-            quizContainer.innerHTML = '';
+            createQuizSection(basicVocabulary, basicQuizContainer);
+            createQuizSection(advancedVocabulary, advancedQuizContainer);
+        }
+
+        // Create a quiz section
+        function createQuizSection(vocabularyList, container) {
+            container.innerHTML = '';
             
-            wordPairs.forEach((pair, index) => {
+            vocabularyList.forEach((item, index) => {
                 const quizItem = document.createElement('div');
                 quizItem.className = 'quiz-item';
                 quizItem.dataset.index = index;
                 
                 const questionElement = document.createElement('div');
                 questionElement.className = 'question';
-                questionElement.textContent = `${index + 1}."${pair.sentans}"?`;
+                questionElement.textContent = `${index + 1}. ${item.sentence}`;
                 
                 const optionsElement = document.createElement('div');
                 optionsElement.className = 'options';
                 
-                // Собираем варианты ответов
-                let options = [pair.option];
+                // Collect answer options
+                let options = [item.option];
                 while (options.length < 4) {
                     const randomIndex = Math.floor(Math.random() * wordPairs.length);
                     const randomWord = wordPairs[randomIndex].option;
@@ -274,10 +312,10 @@
                     }
                 }
                 
-                // Перемешиваем варианты
+                // Shuffle options
                 options = shuffleArray(options);
                 
-                // Создаем элементы вариантов
+                // Create option elements
                 options.forEach(option => {
                     const optionElement = document.createElement('div');
                     optionElement.className = 'option';
@@ -286,7 +324,7 @@
                     optionsElement.appendChild(optionElement);
                 });
                 
-                // Создаем элемент для обратной связи
+                // Create feedback element
                 const feedbackElement = document.createElement('div');
                 feedbackElement.className = 'feedback';
                 feedbackElement.id = `feedback-${index}`;
@@ -294,27 +332,27 @@
                 quizItem.appendChild(questionElement);
                 quizItem.appendChild(optionsElement);
                 quizItem.appendChild(feedbackElement);
-                quizContainer.appendChild(quizItem);
+                container.appendChild(quizItem);
             });
         }
 
-        // Функция для выбора варианта ответа
+        // Select an option
         function selectOption(optionElement, questionIndex, option) {
             if (quizSubmitted) return;
             
-            // Убираем выделение с других вариантов этого вопроса
+            // Remove selection from other options in this question
             const quizItem = optionElement.closest('.quiz-item');
             const allOptions = quizItem.querySelectorAll('.option');
             allOptions.forEach(opt => opt.classList.remove('selected'));
             
-            // Выделяем выбранный вариант
+            // Highlight selected option
             optionElement.classList.add('selected');
             
-            // Сохраняем ответ пользователя
+            // Save user's answer
             userAnswers[questionIndex] = option;
         }
 
-        // Функция для проверки всех ответов
+        // Check all answers
         function checkAllAnswers() {
             if (quizSubmitted) return;
             
@@ -326,66 +364,86 @@
                 const correctAnswer = pair.option;
                 const feedbackElement = document.getElementById(`feedback-${index}`);
                 const quizItem = document.querySelector(`.quiz-item[data-index="${index}"]`);
+                
+                if (!quizItem) return; // Skip if element doesn't exist
+                
                 const allOptions = quizItem.querySelectorAll('.option');
                 
-                // Находим и подсвечиваем правильный ответ
+                // Highlight correct answer
                 allOptions.forEach(option => {
                     if (option.textContent === correctAnswer) {
                         option.classList.add('correct');
                     }
                 });
                 
-                // Проверяем ответ пользователя
+                // Check user's answer
                 if (userAnswer === correctAnswer) {
                     correctCount++;
-                    feedbackElement.textContent = 'Right!';
+                    feedbackElement.innerHTML = `Correct! <span class="chinese">${pair.chinese}</span>`;
                     feedbackElement.className = 'feedback correct';
                 } else if (userAnswer) {
-                    feedbackElement.textContent = `Uncorect! The corect ansver is: ${correctAnswer}`;
+                    feedbackElement.innerHTML = `Incorrect! The correct answer is: ${correctAnswer} <span class="chinese">${pair.chinese}</span>`;
                     feedbackElement.className = 'feedback incorrect';
                     
-                    // Подсвечиваем неправильный ответ пользователя
+                    // Highlight user's incorrect answer
                     allOptions.forEach(option => {
                         if (option.textContent === userAnswer) {
                             option.classList.add('incorrect');
                         }
                     });
                 } else {
-                    feedbackElement.textContent = `The correct ansver is: ${correctAnswer}`;
+                    feedbackElement.innerHTML = `The correct answer is: ${correctAnswer} <span class="chinese">${pair.chinese}</span>`;
                     feedbackElement.className = 'feedback incorrect';
                 }
             });
             
-            // Показываем результаты
+            // Show results
             showResults(correctCount);
         }
 
-        // Функция для отображения результатов
+        // Show results
         function showResults(correctCount) {
-            const percentage = Math.round((correctCount / wordPairs.length) * 100);
-            let message = '';
+            const totalQuestions = wordPairs.length;
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
             
+            // Update progress bar
+            progressBar.style.width = `${percentage}%`;
+            
+            // Set emoji based on score
+            let emoji = '';
             if (percentage === 100) {
-                message = 'Well Well Well my kitten ^-^';
+                emoji = '🎉🎊👑';
             } else if (percentage >= 80) {
-                message = "That's great! Kiiis u";
+                emoji = '😊👍🌟';
             } else if (percentage >= 60) {
-                message = 'A bit practice will hellp🤗';
+                emoji = '🤔📚';
             } else {
-                message = 'Try again, люблю тебя❤️';
+                emoji = '❤️🤗';
             }
             
-            resultsElement.innerHTML = `
-                <div class="score">${correctCount} from ${wordPairs.length} of corect answers (${percentage}%)</div>
-                <p>${message}</p>
-            `;
+            // Set message based on score
+            let message = '';
+            if (percentage === 100) {
+                message = 'Perfect! You are amazing, my love! ❤️';
+            } else if (percentage >= 80) {
+                message = 'Excellent job! I knew you could do it! 😘';
+            } else if (percentage >= 60) {
+                message = 'Good effort! A little more practice will help. 🤗';
+            } else {
+                message = 'Keep trying, my love! I believe in you! ❤️';
+            }
+            
+            // Update results display
+            emojiResult.textContent = emoji;
+            scoreText.textContent = `${correctCount} out of ${totalQuestions} correct (${percentage}%)`;
+            messageText.textContent = message;
             resultsElement.style.display = 'block';
             
-            // Прокручиваем страницу к результатам
+            // Scroll to results
             resultsElement.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Функция для перемешивания массива
+        // Shuffle array
         function shuffleArray(array) {
             const newArray = [...array];
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -395,10 +453,10 @@
             return newArray;
         }
 
-        // Обработчик для кнопки проверки
+        // Event listener for check button
         checkButton.addEventListener('click', checkAllAnswers);
 
-        // Создаем тест при загрузке страницы
+        // Create quiz when page loads
         createQuiz();
     </script>
 </body>
