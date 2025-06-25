@@ -1,52 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz for Vicky❤️</title>
-<style>
-  /* ======= базовая стилизация ======= */
-  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;max-width:900px;margin:0 auto;padding:20px;background:#f8f9fa;color:#333}
-  h1{text-align:center;color:#2c3e50;margin-bottom:30px;font-size:2.5em}
-  .quiz-section{background:#fff;padding:25px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-bottom:30px}
-  .quiz-item{margin-bottom:25px;padding:20px;border-left:4px solid #3498db;background:#f8fafc;border-radius:5px}
-  .question{font-weight:bold;font-size:1.1em;margin-bottom:15px;color:#2c3e50}
-  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .option{padding:12px 15px;border:2px solid #ddd;border-radius:6px;cursor:pointer;text-align:center;transition:.2s}
-  .option:hover{background:#f1f5f9;border-color:#b3cde0}
-  .option.selected{border-color:#3498db;background:#e1f0fa;font-weight:bold}
-  .option.correct{background:#d4edda;border-color:#c3e6cb;color:#155724}
-  .option.incorrect{background:#f8d7da;border-color:#f5c6cb;color:#721c24}
-  .feedback{margin-top:15px;padding:12px;border-radius:6px;display:none;font-size:.95em}
-  .feedback.correct{background:#d4edda;color:#155724}
-  .feedback.incorrect{background:#f8d7da;color:#721c24}
-  .chinese{display:block;margin-top:8px;font-style:italic;color:#6c757d}
-  .check-btn{display:block;margin:30px auto;padding:14px 30px;background:linear-gradient(135deg,#3498db,#2c3e50);color:#fff;border:none;border-radius:30px;font-size:1.1em;cursor:pointer;transition:.3s;box-shadow:0 4px 8px rgba(0,0,0,.1)}
-  .check-btn:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.15)}
-  .results{margin-top:30px;padding:25px;background:#e8f4f8;border-radius:10px;text-align:center;font-size:1.2em;display:none;border:2px solid #bbdefb}
-  .score{font-weight:bold;margin-top:10px;font-size:1.4em;color:#2c3e50}
-  .progress-container{width:100%;background:#e0e0e0;border-radius:10px;margin:20px 0;height:20px}
-  .progress-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,#4caf50,#8bc34a);transition:width .5s}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Quiz for My Love ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #e91e63;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        .quiz-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #673ab7;
+            border-bottom: 2px solid #673ab7;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        .quiz-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #fafafa;
+            transition: all 0.3s;
+        }
+        .quiz-item:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+            border-color: #bbb;
+        }
+        .option.selected {
+            border-color: #2196f3;
+            background-color: #e3f2fd;
+            font-weight: bold;
+        }
+        .option.correct {
+            background-color: #c8e6c9;
+            border-color: #81c784;
+            color: #2e7d32;
+        }
+        .option.incorrect {
+            background-color: #ffcdd2;
+            border-color: #e57373;
+            color: #c62828;
+        }
+        .feedback {
+            margin-top: 15px;
+            font-size: 0.95em;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+            display: block;
+        }
+        .feedback.incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            display: block;
+        }
+        .chinese {
+            display: block;
+            margin-top: 8px;
+            font-style: italic;
+            color: #666;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #e8f4f8;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.2em;
+            display: none;
+            border: 2px solid #bbdefb;
+        }
+        .check-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #e91e63, #9c27b0);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .score {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.3em;
+            color: #2196f3;
+        }
+        .emoji-result {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            transition: width 0.5s;
+        }
+    </style>
 </head>
 <body>
-<h1>Advanced Vocabulary Quiz</h1>
+    <h1>Vocabulary Quiz for My Love ❤️</h1>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Basic Vocabulary</h2>
+        <div id="basic-quiz-container"></div>
+    </div>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Advanced Vocabulary</h2>
+        <div id="advanced-quiz-container"></div>
+    </div>
+    
+    <button id="check-btn" class="check-btn">Check My Answers</button>
+    
+    <div id="results" class="results">
+        <div id="emoji-result" class="emoji-result"></div>
+        <div id="score-text" class="score"></div>
+        <div id="message-text"></div>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
 
-<!-- единый контейнер вопросов -->
-<div id="quiz-container" class="quiz-section"></div>
-
-<button id="check-btn" class="check-btn">Check All Answers</button>
-
-<!-- блок результата -->
-<div id="results" class="results">
-  <div id="score-text" class="score"></div>
-  <div id="message-text"></div>
-  <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
-</div>
-
-<script>
-/* ---------- 1. данные (без уровней) ---------- */
-const vocabulary = const vocabulary = [
+    <script>
+        // Enhanced word pairs with Chinese explanations
+        const wordPairs =[
   {"sentence": "He drank too much ______ at the party.", "option": "alcohol", "chinese": "酒精"},
   {"sentence": "I ______ your kindness.", "option": "appreciate", "chinese": "感激"},
   {"sentence": "She wiped her sweaty ______.", "option": "brow", "chinese": "额头"},
@@ -295,148 +430,202 @@ const vocabulary = const vocabulary = [
   {"sentence": "______ opportunity.", "option": "unique", "chinese": "独特的"},
   {"sentence": "______ truth.", "option": "universal", "chinese": "普遍的"}
 ];
+        // Split into basic and advanced vocabulary
+        const basicVocabulary = wordPairs.slice(0, 5);
+        const advancedVocabulary = wordPairs.slice(5);
 
-/* ---------- 2. переменные состояния ---------- */
-let userAnswers = {};      // {index: слово}
-let quizSubmitted = false; // блокировка после проверки
+        // Quiz state variables
+        let userAnswers = {};
+        let quizSubmitted = false;
 
-/* ---------- 3. DOM-элементы ---------- */
-const quizContainer = document.getElementById('quiz-container');
-const checkBtn       = document.getElementById('check-btn');
-const resultsEl      = document.getElementById('results');
-const scoreText      = document.getElementById('score-text');
-const messageText    = document.getElementById('message-text');
-const progressBar    = document.getElementById('progress-bar');
+        // DOM elements
+        const basicQuizContainer = document.getElementById('basic-quiz-container');
+        const advancedQuizContainer = document.getElementById('advanced-quiz-container');
+        const checkButton = document.getElementById('check-btn');
+        const resultsElement = document.getElementById('results');
+        const emojiResult = document.getElementById('emoji-result');
+        const scoreText = document.getElementById('score-text');
+        const messageText = document.getElementById('message-text');
+        const progressBar = document.getElementById('progress-bar');
 
-/* ---------- 4. инициализация викторины ---------- */
-function initQuiz() {
-  quizContainer.innerHTML = '';
+        // Create quiz sections
+        function createQuiz() {
+            createQuizSection(basicVocabulary, basicQuizContainer);
+            createQuizSection(advancedVocabulary, advancedQuizContainer);
+        }
 
-  vocabulary.forEach((item, idx) => {
-    /* блок вопроса */
-    const quizItem = document.createElement('div');
-    quizItem.className = 'quiz-item';
-    quizItem.dataset.index = idx;
+        // Create a quiz section
+        function createQuizSection(vocabularyList, container) {
+            container.innerHTML = '';
+            
+            vocabularyList.forEach((item, index) => {
+                const quizItem = document.createElement('div');
+                quizItem.className = 'quiz-item';
+                quizItem.dataset.index = index;
+                
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.textContent = `${index + 1}. ${item.sentence}`;
+                
+                const optionsElement = document.createElement('div');
+                optionsElement.className = 'options';
+                
+                // Collect answer options
+                let options = [item.option];
+                while (options.length < 4) {
+                    const randomIndex = Math.floor(Math.random() * wordPairs.length);
+                    const randomWord = wordPairs[randomIndex].option;
+                    if (!options.includes(randomWord)) {
+                        options.push(randomWord);
+                    }
+                }
+                
+                // Shuffle options
+                options = shuffleArray(options);
+                
+                // Create option elements
+                options.forEach(option => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.textContent = option;
+                    optionElement.addEventListener('click', () => selectOption(optionElement, index, option));
+                    optionsElement.appendChild(optionElement);
+                });
+                
+                // Create feedback element
+                const feedbackElement = document.createElement('div');
+                feedbackElement.className = 'feedback';
+                feedbackElement.id = `feedback-${index}`;
+                
+                quizItem.appendChild(questionElement);
+                quizItem.appendChild(optionsElement);
+                quizItem.appendChild(feedbackElement);
+                container.appendChild(quizItem);
+            });
+        }
 
-    /* текст вопроса */
-    const q = document.createElement('div');
-    q.className = 'question';
-    q.textContent = `${idx + 1}. ${item.sentence}`;
+        // Select an option
+        function selectOption(optionElement, questionIndex, option) {
+            if (quizSubmitted) return;
+            
+            // Remove selection from other options in this question
+            const quizItem = optionElement.closest('.quiz-item');
+            const allOptions = quizItem.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Highlight selected option
+            optionElement.classList.add('selected');
+            
+            // Save user's answer
+            userAnswers[questionIndex] = option;
+        }
 
-    /* варианты */
-    const optsWrap = document.createElement('div');
-    optsWrap.className = 'options';
+        // Check all answers
+        function checkAllAnswers() {
+            if (quizSubmitted) return;
+            
+            quizSubmitted = true;
+            let correctCount = 0;
+            
+            wordPairs.forEach((pair, index) => {
+                const userAnswer = userAnswers[index];
+                const correctAnswer = pair.option;
+                const feedbackElement = document.getElementById(`feedback-${index}`);
+                const quizItem = document.querySelector(`.quiz-item[data-index="${index}"]`);
+                
+                if (!quizItem) return; // Skip if element doesn't exist
+                
+                const allOptions = quizItem.querySelectorAll('.option');
+                
+                // Highlight correct answer
+                allOptions.forEach(option => {
+                    if (option.textContent === correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                // Check user's answer
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedbackElement.innerHTML = `Correct! <span class="chinese">${pair.chinese}</span>`;
+                    feedbackElement.className = 'feedback correct';
+                } else if (userAnswer) {
+                    feedbackElement.innerHTML = `Incorrect! The correct answer is: ${correctAnswer} <span class="chinese">${pair.chinese}</span>`;
+                    feedbackElement.className = 'feedback incorrect';
+                    
+                    // Highlight user's incorrect answer
+                    allOptions.forEach(option => {
+                        if (option.textContent === userAnswer) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    feedbackElement.innerHTML = `The correct answer is: ${correctAnswer} <span class="chinese">${pair.chinese}</span>`;
+                    feedbackElement.className = 'feedback incorrect';
+                }
+            });
+            
+            // Show results
+            showResults(correctCount);
+        }
 
-    /* собираем 3 случайных неправильных + 1 правильный */
-    let opts = [item.option];
-    while (opts.length < 4) {
-      const rand = vocabulary[Math.floor(Math.random() * vocabulary.length)].option;
-      if (!opts.includes(rand)) opts.push(rand);
-    }
-    opts = shuffleArray(opts);
+        // Show results
+        function showResults(correctCount) {
+            const totalQuestions = wordPairs.length;
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            
+            // Update progress bar
+            progressBar.style.width = `${percentage}%`;
+            
+            // Set emoji based on score
+            let emoji = '';
+            if (percentage === 100) {
+                emoji = '🎉🎊👑';
+            } else if (percentage >= 80) {
+                emoji = '😊👍🌟';
+            } else if (percentage >= 60) {
+                emoji = '🤔📚';
+            } else {
+                emoji = '❤️🤗';
+            }
+            
+            // Set message based on score
+            let message = '';
+            if (percentage === 100) {
+                message = 'Perfect! You are amazing, my love! ❤️';
+            } else if (percentage >= 80) {
+                message = 'Excellent job! I knew you could do it! 😘';
+            } else if (percentage >= 60) {
+                message = 'Good effort! A little more practice will help. 🤗';
+            } else {
+                message = 'Keep trying, my love! I believe in you! ❤️';
+            }
+            
+            // Update results display
+            emojiResult.textContent = emoji;
+            scoreText.textContent = `${correctCount} out of ${totalQuestions} correct (${percentage}%)`;
+            messageText.textContent = message;
+            resultsElement.style.display = 'block';
+            
+            // Scroll to results
+            resultsElement.scrollIntoView({ behavior: 'smooth' });
+        }
 
-    opts.forEach(opt => {
-      const optEl = document.createElement('div');
-      optEl.className = 'option';
-      optEl.textContent = opt;
-      optEl.addEventListener('click', () => selectOption(optEl, idx, opt));
-      optsWrap.appendChild(optEl);
-    });
+        // Shuffle array
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
 
-    /* блок обратной связи */
-    const feedback = document.createElement('div');
-    feedback.className = 'feedback';
-    feedback.id = `feedback-${idx}`;
+        // Event listener for check button
+        checkButton.addEventListener('click', checkAllAnswers);
 
-    /* собираем карточку */
-    quizItem.appendChild(q);
-    quizItem.appendChild(optsWrap);
-    quizItem.appendChild(feedback);
-    quizContainer.appendChild(quizItem);
-  });
-}
-
-/* ---------- 5. выбор варианта ---------- */
-function selectOption(optEl, qIdx, chosen) {
-  if (quizSubmitted) return;
-
-  /* снимаем выделение с других вариантов */
-  const quizItem = optEl.closest('.quiz-item');
-  quizItem.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-
-  optEl.classList.add('selected'); // выделяем
-  userAnswers[qIdx] = chosen;      // сохраняем ответ
-}
-
-/* ---------- 6. проверка всех ответов ---------- */
-function checkAllAnswers() {
-  if (quizSubmitted) return;
-
-  quizSubmitted = true;
-  let correct = 0;
-  const total = vocabulary.length;
-
-  vocabulary.forEach((item, idx) => {
-    const userAnswer = userAnswers[idx];
-    const correctAnswer = item.option;
-    const feedback = document.getElementById(`feedback-${idx}`);
-    const quizItem = document.querySelector(`.quiz-item[data-index="${idx}"]`);
-    const opts = quizItem.querySelectorAll('.option');
-
-    /* подсветка правильного */
-    opts.forEach(o => o.textContent === correctAnswer && o.classList.add('correct'));
-
-    if (userAnswer === correctAnswer) {
-      correct++;
-      feedback.innerHTML = `Correct! <span class="chinese">${item.chinese}</span>`;
-      feedback.classList.add('correct');
-    } else if (userAnswer) {
-      feedback.innerHTML = `Incorrect! Correct answer: ${correctAnswer} <span class="chinese">${item.chinese}</span>`;
-      feedback.classList.add('incorrect');
-      /* подсветим ошибочный выбор */
-      opts.forEach(o => o.textContent === userAnswer && o.classList.add('incorrect'));
-    } else {
-      feedback.innerHTML = `No answer. Correct: ${correctAnswer} <span class="chinese">${item.chinese}</span>`;
-      feedback.classList.add('incorrect');
-    }
-    feedback.style.display = 'block';
-  });
-
-  /* вывод результата */
-  showResults(correct, total);
-}
-
-/* ---------- 7. вывод прогресса ---------- */
-function showResults(correct, total) {
-  const percent = Math.round((correct / total) * 100);
-  progressBar.style.width = `${percent}%`;
-  scoreText.textContent   = `${correct} / ${total} correct (${percent}%)`;
-
-  let msg = 'Nice try! Review and try again.';
-  if (percent === 100) msg = "Perfect score! You're a vocabulary master!";
-  else if (percent >= 80) msg = 'Excellent job! You know most of these words well!';
-  else if (percent >= 60) msg = 'Good effort! Keep practicing to improve!';
-
-  messageText.textContent = msg;
-  resultsEl.style.display = 'block';
-  resultsEl.scrollIntoView({behavior:'smooth'});
-}
-
-/* ---------- 8. утилита shuffle ---------- */
-function shuffleArray(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-/* ---------- 9. запуск ---------- */
-window.onload = () => {
-  initQuiz();
-  checkBtn.addEventListener('click', checkAllAnswers);
-};
-</script>
+        // Create quiz when page loads
+        createQuiz();
+    </script>
 </body>
 </html>
