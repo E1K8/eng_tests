@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Quiz for My Love ❤️</title>
+    <title>Vocabulary Quiz Challenge</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -156,19 +156,34 @@
     </style>
 </head>
 <body>
-    <h1>Vocabulary Quiz for My Love ❤️</h1>
+    <h1>Vocabulary Master Challenge</h1>
     
     <div class="quiz-section">
-        <h2 class="section-title">Basic Vocabulary</h2>
-        <div id="basic-quiz-container"></div>
+        <h2 class="section-title">Everyday Words</h2>
+        <div id="everyday-container"></div>
     </div>
     
     <div class="quiz-section">
         <h2 class="section-title">Advanced Vocabulary</h2>
-        <div id="advanced-quiz-container"></div>
+        <div id="advanced-container"></div>
     </div>
     
-    <button id="check-btn" class="check-btn">Check My Answers</button>
+    <div class="quiz-section">
+        <h2 class="section-title">Academic & Formal Terms</h2>
+        <div id="academic-container"></div>
+    </div>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Idiomatic & Descriptive Words</h2>
+        <div id="idiomatic-container"></div>
+    </div>
+    
+    <div class="quiz-section">
+        <h2 class="section-title">Final Challenge (Harder Words)</h2>
+        <div id="final-container"></div>
+    </div>
+    
+    <button id="check-btn" class="check-btn">Check All Answers</button>
     
     <div id="results" class="results">
         <div id="emoji-result" class="emoji-result"></div>
@@ -180,75 +195,77 @@
     </div>
 
     <script>
-        // Enhanced word pairs with Chinese explanations
+        // All 25 questions with Chinese explanations
         const wordPairs = [
-            // Basic vocabulary
+            // Everyday Words (5)
             {
-                "sentence": "She poured a glass of ______ for her guest.",
+                "sentence": "He drank too much ______ at the party and felt sick.",
                 "option": "alcohol",
                 "chinese": "酒精或含酒精的饮料"
             },
             {
-                "sentence": "I really ______ your help with this project.",
-                "option": "appreciate",
-                "chinese": "感激或欣赏"
+                "sentence": "She used a cloth to ______ the spilled coffee off the table.",
+                "option": "dab",
+                "chinese": "轻轻擦拭或轻拍"
             },
             {
-                "sentence": "He wiped the sweat from his ______ after running.",
-                "option": "brow",
-                "chinese": "眉毛或额头"
+                "sentence": "The politician's speech was full of ______ promises.",
+                "option": "hypocritical",
+                "chinese": "虚伪的，说一套做一套"
             },
             {
-                "sentence": "She felt a sharp pain in her ______ after coughing.",
-                "option": "chest",
-                "chinese": "胸部"
+                "sentence": "The ______ of the sink was clogged with hair.",
+                "option": "drain",
+                "chinese": "排水管或下水道"
             },
             {
-                "sentence": "Climate change is a major global ______.",
-                "option": "concern",
-                "chinese": "担忧或关注的问题"
+                "sentence": "She gave a ______ of her shoulders to show she didn't care.",
+                "option": "gesture",
+                "chinese": "手势或身体动作"
             },
-            // Advanced vocabulary
+            
+            // Advanced Vocabulary (5)
             {
-                "sentence": "The scientist's ______ in genetics earned her recognition.",
+                "sentence": "The scientist's ______ in genetics earned her a Nobel Prize.",
                 "option": "expertise",
                 "chinese": "专业知识或技能"
             },
             {
+                "sentence": "His ______ attitude made it hard to work with him.",
+                "option": "arrogant",
+                "chinese": "傲慢的、自以为是的"
+            },
+            {
                 "sentence": "The ancient ______ was perfectly preserved in the museum.",
                 "option": "fossil",
-                "chinese": "化石"
+                "chinese": "化石，古代生物的遗骸"
             },
             {
                 "sentence": "The volcano's ______ covered the town in ash.",
                 "option": "eruption",
-                "chinese": "喷发"
+                "chinese": "（火山）喷发"
             },
             {
-                "sentence": "She felt a ______ of excitement before the performance.",
-                "option": "thrill",
-                "chinese": "一阵激动或兴奋"
+                "sentence": "She felt a ______ of sadness when she left her hometown.",
+                "option": "pang",
+                "chinese": "突然的疼痛或情感波动"
             },
-            {
-                "sentence": "The ______ of the forest at night was eerie.",
-                "option": "silence",
-                "chinese": "寂静"
-            },
-            // More words from your list
+            
+            // Academic & Formal Terms (5)
             {
                 "sentence": "The ______ of the study showed a clear trend.",
                 "option": "statistics",
-                "chinese": "统计数据"
+                "chinese": "统计数据或统计学"
             },
             {
                 "sentence": "His speech was met with ______ from the audience.",
                 "option": "indifference",
-                "chinese": "冷漠"
+                "chinese": "冷漠、不关心"
             },
             {
                 "sentence": "The lawyer's argument was ______ and convincing.",
                 "option": "penetrating",
-                "chinese": "尖锐的、深刻的"
+                "chinese": "（分析）尖锐、深刻"
             },
             {
                 "sentence": "The ______ of the novel was its exploration of human nature.",
@@ -258,21 +275,81 @@
             {
                 "sentence": "The committee will ______ over the meeting tomorrow.",
                 "option": "preside",
-                "chinese": "主持"
+                "chinese": "主持（会议等）"
+            },
+            
+            // Idiomatic & Descriptive Words (5)
+            {
+                "sentence": "After the storm, the streets were in complete ______.",
+                "option": "chaos",
+                "chinese": "混乱、无序的状态"
+            },
+            {
+                "sentence": "Her smile had a ______ quality that made everyone trust her.",
+                "option": "genuine",
+                "chinese": "真实的、真诚的"
+            },
+            {
+                "sentence": "The old man's hands were ______ with age.",
+                "option": "frail",
+                "chinese": "脆弱的、虚弱的"
+            },
+            {
+                "sentence": "The children played ______ in the garden.",
+                "option": "blissfully",
+                "chinese": "极度快乐地"
+            },
+            {
+                "sentence": "The mountain peak was covered in a ______ of snow.",
+                "option": "blanket",
+                "chinese": "厚厚的覆盖层"
+            },
+            
+            // Final Challenge (Harder Words) (5)
+            {
+                "sentence": "The detective found a ______ of evidence in the suspect's house.",
+                "option": "fragment",
+                "chinese": "碎片或零星证据"
+            },
+            {
+                "sentence": "His ______ approach to problem-solving annoyed his colleagues.",
+                "option": "literal",
+                "chinese": "字面的、缺乏想象力的"
+            },
+            {
+                "sentence": "The ______ of the ancient text took years of research.",
+                "option": "deciphering",
+                "chinese": "破译（密码或古文）"
+            },
+            {
+                "sentence": "She felt a ______ of excitement before the performance.",
+                "option": "thrill",
+                "chinese": "一阵激动或兴奋"
+            },
+            {
+                "sentence": "The ______ of the forest at night was eerie.",
+                "option": "silence",
+                "chinese": "寂静、无声"
             }
         ];
 
-        // Split into basic and advanced vocabulary
-        const basicVocabulary = wordPairs.slice(0, 5);
-        const advancedVocabulary = wordPairs.slice(5);
+        // Split into sections
+        const everydayWords = wordPairs.slice(0, 5);
+        const advancedVocab = wordPairs.slice(5, 10);
+        const academicTerms = wordPairs.slice(10, 15);
+        const idiomaticWords = wordPairs.slice(15, 20);
+        const finalChallenge = wordPairs.slice(20);
 
         // Quiz state variables
         let userAnswers = {};
         let quizSubmitted = false;
 
         // DOM elements
-        const basicQuizContainer = document.getElementById('basic-quiz-container');
-        const advancedQuizContainer = document.getElementById('advanced-quiz-container');
+        const everydayContainer = document.getElementById('everyday-container');
+        const advancedContainer = document.getElementById('advanced-container');
+        const academicContainer = document.getElementById('academic-container');
+        const idiomaticContainer = document.getElementById('idiomatic-container');
+        const finalContainer = document.getElementById('final-container');
         const checkButton = document.getElementById('check-btn');
         const resultsElement = document.getElementById('results');
         const emojiResult = document.getElementById('emoji-result');
@@ -280,10 +357,13 @@
         const messageText = document.getElementById('message-text');
         const progressBar = document.getElementById('progress-bar');
 
-        // Create quiz sections
+        // Create all quiz sections
         function createQuiz() {
-            createQuizSection(basicVocabulary, basicQuizContainer);
-            createQuizSection(advancedVocabulary, advancedQuizContainer);
+            createQuizSection(everydayWords, everydayContainer);
+            createQuizSection(advancedVocab, advancedContainer);
+            createQuizSection(academicTerms, academicContainer);
+            createQuizSection(idiomaticWords, idiomaticContainer);
+            createQuizSection(finalChallenge, finalContainer);
         }
 
         // Create a quiz section
@@ -291,13 +371,14 @@
             container.innerHTML = '';
             
             vocabularyList.forEach((item, index) => {
+                const globalIndex = wordPairs.indexOf(item);
                 const quizItem = document.createElement('div');
                 quizItem.className = 'quiz-item';
-                quizItem.dataset.index = index;
+                quizItem.dataset.index = globalIndex;
                 
                 const questionElement = document.createElement('div');
                 questionElement.className = 'question';
-                questionElement.textContent = `${index + 1}. ${item.sentence}`;
+                questionElement.textContent = `${globalIndex + 1}. ${item.sentence}`;
                 
                 const optionsElement = document.createElement('div');
                 optionsElement.className = 'options';
@@ -320,14 +401,14 @@
                     const optionElement = document.createElement('div');
                     optionElement.className = 'option';
                     optionElement.textContent = option;
-                    optionElement.addEventListener('click', () => selectOption(optionElement, index, option));
+                    optionElement.addEventListener('click', () => selectOption(optionElement, globalIndex, option));
                     optionsElement.appendChild(optionElement);
                 });
                 
                 // Create feedback element
                 const feedbackElement = document.createElement('div');
                 feedbackElement.className = 'feedback';
-                feedbackElement.id = `feedback-${index}`;
+                feedbackElement.id = `feedback-${globalIndex}`;
                 
                 quizItem.appendChild(questionElement);
                 quizItem.appendChild(optionsElement);
@@ -365,7 +446,7 @@
                 const feedbackElement = document.getElementById(`feedback-${index}`);
                 const quizItem = document.querySelector(`.quiz-item[data-index="${index}"]`);
                 
-                if (!quizItem) return; // Skip if element doesn't exist
+                if (!quizItem) return;
                 
                 const allOptions = quizItem.querySelectorAll('.option');
                 
@@ -424,13 +505,13 @@
             // Set message based on score
             let message = '';
             if (percentage === 100) {
-                message = 'Perfect! You are amazing, my love! ❤️';
+                message = 'Perfect score! Vocabulary Master!';
             } else if (percentage >= 80) {
-                message = 'Excellent job! I knew you could do it! 😘';
+                message = 'Excellent job! You know most of these words well!';
             } else if (percentage >= 60) {
-                message = 'Good effort! A little more practice will help. 🤗';
+                message = 'Good effort! Keep practicing to improve!';
             } else {
-                message = 'Keep trying, my love! I believe in you! ❤️';
+                message = 'Nice try! Review the answers and try again!';
             }
             
             // Update results display
