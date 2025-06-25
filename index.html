@@ -198,7 +198,7 @@
 
     <script>
         // Vocabulary organized by difficulty level with Chinese explanations
-    const vocabulary=  {
+        const vocabulary = {
   "Level 1 (Beginner)": [
     {"sentence": "He drank too much ______ at the party.", "option": "alcohol", "chinese": "酒精"},
     {"sentence": "I ______ your kindness.", "option": "appreciate", "chinese": "感激"},
@@ -542,10 +542,9 @@
     {"sentence": "Skilled ______.", "option": "weaver", "chinese": "织工"},
     {"sentence": "______ garden.", "option": "weed-free", "chinese": "无杂草的"},
     {"sentence": "Earth ______.", "option": "worm", "chinese": "蚯蚓"},
-    {"sentence": "Bank ______.", "option": "account", "chinese": "账户"},
-    ]}
-  
-             
+    {"sentence": "Bank ______.", "option": "account", "chinese": "账户"}]}
+    
+        
 
         // Quiz state variables
         let userAnswers = {};
@@ -755,7 +754,10 @@
             
             // Collapse all sections initially
             document.querySelectorAll('.category-toggle').forEach(button => {
-                button.click(); // Simulate click to collapse
+                const sectionId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+                const section = document.getElementById(sectionId);
+                section.style.display = 'none';
+                button.textContent = button.textContent.replace('▼', '►');
             });
         };
     </script>
