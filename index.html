@@ -199,415 +199,179 @@
     <script>
         // Vocabulary organized by difficulty level with Chinese explanations
         const vocabulary = {
-              basic: [
-        {
-            "sentence": "He drank too much ______ at the party and felt sick.",
-            "option": "alcohol",
-            "chinese": "酒精"
-        },
-        {
-            "sentence": "She used a cloth to ______ the spilled coffee off the table.",
-            "option": "dab",
-            "chinese": "轻拍"
-        },
-        {
-            "sentence": "The ______ of the sink was clogged with hair.",
-            "option": "drain",
-            "chinese": "排水管"
-        },
-        {
-            "sentence": "Put the milk back in the ______ to keep it cold.",
-            "option": "refrigerator",
-            "chinese": "冰箱"
-        },
-        {
-            "sentence": "She gave a ______ of her shoulders to show she didn't care.",
-            "option": "gesture",
-            "chinese": "手势"
-        },
-        {
-            "sentence": "The ______ on the bottle helps direct the liquid flow.",
-            "option": "nozzle",
-            "chinese": "喷嘴"
-        },
-        {
-            "sentence": "He made a ______ of dirty clothes in the corner of his room.",
-            "option": "pile",
-            "chinese": "堆"
-        },
-        {
-            "sentence": "Add just a ______ of salt to enhance the flavor.",
-            "option": "pinch",
-            "chinese": "一撮"
-        },
-        {
-            "sentence": "The ______ of his voice rose when he got excited.",
-            "option": "pitch",
-            "chinese": "音高"
-        },
-        {
-            "sentence": "She took a ______ into the cold lake without hesitation.",
-            "option": "plunge",
-            "chinese": "跳入"
-        },
-        {
-            "sentence": "The recipe calls for one ______ of ground beef.",
-            "option": "pound",
-            "chinese": "磅"
-        },
-        {
-            "sentence": "______ the button firmly to start the machine.",
-            "option": "Press",
-            "chinese": "按压"
-        },
-        {
-            "sentence": "The ______ fork was left on the table after dinner.",
-            "option": "silverware",
-            "chinese": "银器"
-        },
-        {
-            "sentence": "The kitchen ______ was full of dirty dishes.",
-            "option": "sink",
-            "chinese": "水槽"
-        },
-        {
-            "sentence": "The twig made a loud ______ when he stepped on it.",
-            "option": "snap",
-            "chinese": "折断声"
-        },
-        {
-            "sentence": "Use this ______ bottle to water the plants.",
-            "option": "spray",
-            "chinese": "喷雾"
-        },
-        {
-            "sentence": "______ the orange to get all the juice out.",
-            "option": "Squeeze",
-            "chinese": "挤压"
-        },
-        {
-            "sentence": "The red wine left a ______ on the white tablecloth.",
-            "option": "stain",
-            "chinese": "污渍"
-        },
-        {
-            "sentence": "The ______ of the table was smooth and polished.",
-            "option": "surface",
-            "chinese": "表面"
-        },
-        {
-            "sentence": "She wore a bracelet on her ______.",
-            "option": "wrist",
-            "chinese": "手腕"
-        }
+    basic: [
+        // Basic everyday words (40 items)
+        {"sentence": "He drank too much ______ at the party and felt sick.", "option": "alcohol", "chinese": "酒精"},
+        {"sentence": "She used a cloth to ______ the spilled coffee off the table.", "option": "dab", "chinese": "轻拍"},
+        {"sentence": "The ______ of the sink was clogged with hair.", "option": "drain", "chinese": "排水管"},
+        {"sentence": "Put the milk back in the ______ to keep it cold.", "option": "refrigerator", "chinese": "冰箱"},
+        {"sentence": "She gave a ______ of her shoulders to show she didn't care.", "option": "gesture", "chinese": "手势"},
+        {"sentence": "The ______ on the bottle helps direct the liquid flow.", "option": "nozzle", "chinese": "喷嘴"},
+        {"sentence": "He made a ______ of dirty clothes in the corner.", "option": "pile", "chinese": "堆"},
+        {"sentence": "Add just a ______ of salt to enhance the flavor.", "option": "pinch", "chinese": "一撮"},
+        {"sentence": "The ______ of his voice rose when excited.", "option": "pitch", "chinese": "音高"},
+        {"sentence": "She took a ______ into the cold lake.", "option": "plunge", "chinese": "跳入"},
+        {"sentence": "The recipe needs one ______ of ground beef.", "option": "pound", "chinese": "磅"},
+        {"sentence": "______ the button firmly to start.", "option": "Press", "chinese": "按压"},
+        {"sentence": "The ______ fork was left on the table.", "option": "silverware", "chinese": "银器"},
+        {"sentence": "The kitchen ______ was full of dishes.", "option": "sink", "chinese": "水槽"},
+        {"sentence": "The twig made a loud ______ when stepped on.", "option": "snap", "chinese": "折断声"},
+        {"sentence": "Use this ______ bottle for plants.", "option": "spray", "chinese": "喷雾"},
+        {"sentence": "______ the orange to get juice out.", "option": "Squeeze", "chinese": "挤压"},
+        {"sentence": "The wine left a ______ on the tablecloth.", "option": "stain", "chinese": "污渍"},
+        {"sentence": "The table's ______ was polished.", "option": "surface", "chinese": "表面"},
+        {"sentence": "She wore a bracelet on her ______.", "option": "wrist", "chinese": "手腕"},
+        {"sentence": "The ______ pan was hard to clean.", "option": "greasy", "chinese": "油腻的"},
+        {"sentence": "Clean dishes with hot water and ______.", "option": "rinse", "chinese": "冲洗"},
+        {"sentence": "______ through drawers to find keys.", "option": "rummage", "chinese": "翻找"},
+        {"sentence": "He did it for his family's ______.", "option": "sake", "chinese": "缘故"},
+        {"sentence": "______ we finished on time.", "option": "Somehow", "chinese": "不知怎么地"},
+        {"sentence": "The ______ tension was obvious.", "option": "racist", "chinese": "种族主义的"},
+        {"sentence": "The hotel ______ was reasonable.", "option": "rate", "chinese": "价格"},
+        {"sentence": "The fork's ______ were bent.", "option": "tines", "chinese": "齿尖"},
+        {"sentence": "The page was ______ from the book.", "option": "unattached", "chinese": "未连接的"},
+        {"sentence": "The ______ fell from the tree.", "option": "leaf", "chinese": "树叶"},
+        {"sentence": "Stir coffee with a ______.", "option": "spoon", "chinese": "勺子"},
+        {"sentence": "The bed ______ needed washing.", "option": "covers", "chinese": "床罩"},
+        {"sentence": "The store is around the ______.", "option": "corner", "chinese": "角落"},
+        {"sentence": "The clerk stood behind the ______.", "option": "counter", "chinese": "柜台"},
+        {"sentence": "______ the cap until secure.", "option": "Tighten", "chinese": "拧紧"},
+        {"sentence": "The baby's first ______ was 'mama'.", "option": "word", "chinese": "单词"},
+        {"sentence": "She wore ______ in the sun.", "option": "glasses", "chinese": "眼镜"},
+        {"sentence": "The ______ rang at the door.", "option": "bell", "chinese": "门铃"},
+        {"sentence": "Cut paper with ______.", "option": "scissors", "chinese": "剪刀"},
+        {"sentence": "The room ______ was too bright.", "option": "light", "chinese": "灯"}
     ],
     intermediate: [
-        {
-            "sentence": "The politician's speech was full of ______ promises.",
-            "option": "hypocritical",
-            "chinese": "虚伪的"
-        },
-        {
-            "sentence": "The ______ of the study showed a clear trend.",
-            "option": "statistics",
-            "chinese": "统计数据"
-        },
-        {
-            "sentence": "After the storm, the streets were in complete ______.",
-            "option": "chaos",
-            "chinese": "混乱"
-        },
-        {
-            "sentence": "The old man's hands were ______ with age.",
-            "option": "frail",
-            "chinese": "脆弱的"
-        },
-        {
-            "sentence": "The children played ______ in the garden.",
-            "option": "blissfully",
-            "chinese": "幸福地"
-        },
-        {
-            "sentence": "I truly ______ all the help you've given me.",
-            "option": "appreciate",
-            "chinese": "感激"
-        },
-        {
-            "sentence": "He wiped the sweat from his ______.",
-            "option": "brow",
-            "chinese": "额头"
-        },
-        {
-            "sentence": "She felt pain in her ______ after running.",
-            "option": "chest",
-            "chinese": "胸部"
-        },
-        {
-            "sentence": "Environmental pollution is a major ______ worldwide.",
-            "option": "concern",
-            "chinese": "关切"
-        },
-        {
-            "sentence": "Let me ______ you on your promotion!",
-            "option": "congratulate",
-            "chinese": "祝贺"
-        },
-        {
-            "sentence": "We need to ______ all options before deciding.",
-            "option": "consider",
-            "chinese": "考虑"
-        },
-        {
-            "sentence": "It was very ______ of you to help the elderly woman.",
-            "option": "considerate",
-            "chinese": "体贴的"
-        },
-        {
-            "sentence": "The store is just around the ______.",
-            "option": "corner",
-            "chinese": "角落"
-        },
-        {
-            "sentence": "The salesperson stood behind the ______.",
-            "option": "counter",
-            "chinese": "柜台"
-        },
-        {
-            "sentence": "The bed ______ needed to be washed.",
-            "option": "covers",
-            "chinese": "床罩"
-        },
-        {
-            "sentence": "The ______ between the candidates was intense.",
-            "option": "debate",
-            "chinese": "辩论"
-        },
-        {
-            "sentence": "Let me ______ how this machine works.",
-            "option": "demonstrate",
-            "chinese": "演示"
-        },
-        {
-            "sentence": "His tone seemed to ______ that he was unhappy.",
-            "option": "imply",
-            "chinese": "暗示"
-        },
-        {
-            "sentence": "She treated the news with complete ______.",
-            "option": "indifference",
-            "chinese": "冷漠"
-        },
-        {
-            "sentence": "______ the bottle cap until it's secure.",
-            "option": "Tighten",
-            "chinese": "拧紧"
-        }
+        // Intermediate difficulty words (40 items)
+        {"sentence": "The politician made ______ promises.", "option": "hypocritical", "chinese": "虚伪的"},
+        {"sentence": "The study's ______ showed trends.", "option": "statistics", "chinese": "统计数据"},
+        {"sentence": "After the storm: complete ______.", "option": "chaos", "chinese": "混乱"},
+        {"sentence": "His hands were ______ with age.", "option": "frail", "chinese": "脆弱的"},
+        {"sentence": "Children played ______.", "option": "blissfully", "chinese": "幸福地"},
+        {"sentence": "I ______ your help.", "option": "appreciate", "chinese": "感激"},
+        {"sentence": "Wiped sweat from his ______.", "option": "brow", "chinese": "额头"},
+        {"sentence": "Pain in her ______ after running.", "option": "chest", "chinese": "胸部"},
+        {"sentence": "Pollution is a major ______.", "option": "concern", "chinese": "关切"},
+        {"sentence": "______ on your promotion!", "option": "Congratulate", "chinese": "祝贺"},
+        {"sentence": "______ all options first.", "option": "Consider", "chinese": "考虑"},
+        {"sentence": "Very ______ to help elderly.", "option": "considerate", "chinese": "体贴的"},
+        {"sentence": "The ______ debate was intense.", "option": "congressional", "chinese": "国会的"},
+        {"sentence": "The car ______ was severe.", "option": "crash", "chinese": "碰撞"},
+        {"sentence": "In ______ need of help.", "option": "desperate", "chinese": "绝望的"},
+        {"sentence": "A clear ______ between them.", "option": "distinction", "chinese": "区别"},
+        {"sentence": "______ your seatbelt.", "option": "Fasten", "chinese": "系紧"},
+        {"sentence": "The ______ to Florida.", "option": "flight", "chinese": "航班"},
+        {"sentence": "______ devices help swimming.", "option": "Flotation", "chinese": "漂浮"},
+        {"sentence": "______ in winter.", "option": "Freeze", "chinese": "冻结"},
+        {"sentence": "______ in the dark.", "option": "Grope", "chinese": "摸索"},
+        {"sentence": "The ______ flew over the beach.", "option": "gull", "chinese": "海鸥"},
+        {"sentence": "______ winter weather.", "option": "Harsh", "chinese": "严酷的"},
+        {"sentence": "Emergency ______ arrived.", "option": "helicopter", "chinese": "直升机"},
+        {"sentence": "An ______ object blocked the road.", "option": "immovable", "chinese": "不可移动的"},
+        {"sentence": "The car's ______ was strong.", "option": "impact", "chinese": "冲击"},
+        {"sentence": "______ bureaucracy.", "option": "Impersonal", "chinese": "无人情味的"},
+        {"sentence": "______ passengers were helped.", "option": "Injured", "chinese": "受伤的"},
+        {"sentence": "Private ______ travel.", "option": "jet", "chinese": "喷气机"},
+        {"sentence": "A ______ achievement.", "option": "lifetime", "chinese": "一生的"},
+        {"sentence": "______, we agree.", "option": "Likewise", "chinese": "同样地"},
+        {"sentence": "The Washington ______.", "option": "Monument", "chinese": "纪念碑"},
+        {"sentence": "A special ______.", "option": "occasion", "chinese": "场合"},
+        {"sentence": "The ______ River.", "option": "Potomac", "chinese": "波托马克河"},
+        {"sentence": "Moral ______.", "option": "principle", "chinese": "原则"},
+        {"sentence": "Scientific ______.", "option": "proof", "chinese": "证明"},
+        {"sentence": "An official ______.", "option": "remark", "chinese": "评论"},
+        {"sentence": "______ the district.", "option": "Represent", "chinese": "代表"},
+        {"sentence": "The final ______.", "option": "section", "chinese": "部分"}
     ],
     advanced: [
-        {
-            "sentence": "The scientist's ______ in genetics earned her recognition.",
-            "option": "expertise",
-            "chinese": "专业知识"
-        },
-        {
-            "sentence": "The volcano's ______ covered the town in ash.",
-            "option": "eruption",
-            "chinese": "喷发"
-        },
-        {
-            "sentence": "The lawyer's argument was ______ and convincing.",
-            "option": "penetrating",
-            "chinese": "尖锐的"
-        },
-        {
-            "sentence": "The ______ of the novel was its exploration of human nature.",
-            "option": "essence",
-            "chinese": "本质"
-        },
-        {
-            "sentence": "The committee will ______ over the meeting tomorrow.",
-            "option": "preside",
-            "chinese": "主持"
-        },
-        {
-            "sentence": "Graduating with honors was her greatest ______.",
-            "option": "accomplishment",
-            "chinese": "成就"
-        },
-        {
-            "sentence": "It took years to ______ this level of skill.",
-            "option": "acquire",
-            "chinese": "获得"
-        },
-        {
-            "sentence": "He spoke ______ about his achievements.",
-            "option": "arrogantly",
-            "chinese": "傲慢地"
-        },
-        {
-            "sentence": "The museum displayed various ______ from ancient cultures.",
-            "option": "arts",
-            "chinese": "艺术品"
-        },
-        {
-            "sentence": "Take two ______ for your headache.",
-            "option": "aspirin",
-            "chinese": "阿司匹林"
-        },
-        {
-            "sentence": "We can ______ that prices will rise next year.",
-            "option": "assume",
-            "chinese": "假设"
-        },
-        {
-            "sentence": "The manager will be ______ next Tuesday.",
-            "option": "available",
-            "chinese": "可用的"
-        },
-        {
-            "sentence": "The tall boy was nicknamed ______ by his friends.",
-            "option": "beanpole",
-            "chinese": "豆杆（形容瘦高）"
-        },
-        {
-            "sentence": "The ______ charged at the matador.",
-            "option": "bull",
-            "chinese": "公牛"
-        },
-        {
-            "sentence": "This document will ______ that the product meets standards.",
-            "option": "certify",
-            "chinese": "证明"
-        },
-        {
-            "sentence": "Ancient Rome was a highly ______ society.",
-            "option": "civilized",
-            "chinese": "文明的"
-        },
-        {
-            "sentence": "The lawyer met with her new ______.",
-            "option": "client",
-            "chinese": "客户"
-        },
-        {
-            "sentence": "This box can ______ up to 20 books.",
-            "option": "contain",
-            "chinese": "容纳"
-        },
-        {
-            "sentence": "There's a ______ between these two historical periods.",
-            "option": "continuity",
-            "chinese": "连续性"
-        },
-        {
-            "sentence": "The detective found traces of ______ in the glass.",
-            "option": "cyanide",
-            "chinese": "氰化物"
-        }
+        // Advanced vocabulary (40 items)
+        {"sentence": "Her genetic ______.", "option": "expertise", "chinese": "专业知识"},
+        {"sentence": "Volcanic ______.", "option": "eruption", "chinese": "喷发"},
+        {"sentence": "______ legal argument.", "option": "penetrating", "chinese": "尖锐的"},
+        {"sentence": "The novel's ______.", "option": "essence", "chinese": "本质"},
+        {"sentence": "______ over the meeting.", "option": "preside", "chinese": "主持"},
+        {"sentence": "Major ______.", "option": "accomplishment", "chinese": "成就"},
+        {"sentence": "______ new skills.", "option": "acquire", "chinese": "获得"},
+        {"sentence": "Spoke ______.", "option": "arrogantly", "chinese": "傲慢地"},
+        {"sentence": "Ancient ______.", "option": "arts", "chinese": "艺术品"},
+        {"sentence": "Take two ______.", "option": "aspirin", "chinese": "阿司匹林"},
+        {"sentence": "______ prices will rise.", "option": "assume", "chinese": "假设"},
+        {"sentence": "______ next Tuesday.", "option": "available", "chinese": "可用的"},
+        {"sentence": "Nicknamed ______.", "option": "beanpole", "chinese": "豆杆"},
+        {"sentence": "The ______ charged.", "option": "bull", "chinese": "公牛"},
+        {"sentence": "______ the product.", "option": "certify", "chinese": "证明"},
+        {"sentence": "______ society.", "option": "civilized", "chinese": "文明的"},
+        {"sentence": "Met her ______.", "option": "client", "chinese": "客户"},
+        {"sentence": "______ 20 books.", "option": "contain", "chinese": "容纳"},
+        {"sentence": "Historical ______.", "option": "continuity", "chinese": "连续性"},
+        {"sentence": "Traces of ______.", "option": "cyanide", "chinese": "氰化物"},
+        {"sentence": "Medical ______.", "option": "incompetence", "chinese": "无能"},
+        {"sentence": "______, all die.", "option": "Inevitably", "chinese": "不可避免地"},
+        {"sentence": "Her ______ helped.", "option": "intellect", "chinese": "智力"},
+        {"sentence": "Theoretical ______.", "option": "limitations", "chinese": "局限性"},
+        {"sentence": "______ interpretation.", "option": "literal", "chinese": "字面的"},
+        {"sentence": "______ equipment.", "option": "maintain", "chinese": "维护"},
+        {"sentence": "______ production.", "option": "mechanize", "chinese": "机械化"},
+        {"sentence": "______ man lived.", "option": "Neanderthal", "chinese": "尼安德特人"},
+        {"sentence": "Risky; ______ proceed.", "option": "nevertheless", "chinese": "然而"},
+        {"sentence": "Crop ______.", "option": "pests", "chinese": "害虫"},
+        {"sentence": "______ mixed compounds.", "option": "physicist", "chinese": "物理学家"},
+        {"sentence": "Take one ______.", "option": "pill", "chinese": "药丸"},
+        {"sentence": "______ ceremony.", "option": "annual", "chinese": "每年的"},
+        {"sentence": "______ wire fence.", "option": "barbed", "chinese": "有刺的"},
+        {"sentence": "Used ______.", "option": "binoculars", "chinese": "双筒望远镜"},
+        {"sentence": "______ from marble.", "option": "carved", "chinese": "雕刻"},
+        {"sentence": "Medieval ______.", "option": "castle", "chinese": "城堡"},
+        {"sentence": "______ forest.", "option": "dense", "chinese": "密集的"},
+        {"sentence": "Canyon ______.", "option": "echo", "chinese": "回声"},
+        {"sentence": "Subject ______.", "option": "familiarity", "chinese": "熟悉"}
     ],
     academic: [
-        {
-            "sentence": "The ______ of ancient texts requires specialized knowledge.",
-            "option": "deciphering",
-            "chinese": "破译"
-        },
-        {
-            "sentence": "The study examined the ______ effects of the treatment.",
-            "option": "therapeutic",
-            "chinese": "治疗的"
-        },
-        {
-            "sentence": "Her research contributed to the ______ of the theory.",
-            "option": "validation",
-            "chinese": "验证"
-        },
-        {
-            "sentence": "The ______ approach yielded more accurate results.",
-            "option": "methodological",
-            "chinese": "方法论的"
-        },
-        {
-            "sentence": "The data showed a statistically ______ correlation.",
-            "option": "significant",
-            "chinese": "显著的"
-        },
-        {
-            "sentence": "The ______ of evidence supported the hypothesis.",
-            "option": "accumulation",
-            "chinese": "积累"
-        },
-        {
-            "sentence": "The ______ wire fence kept animals out.",
-            "option": "barbed",
-            "chinese": "有刺的"
-        },
-        {
-            "sentence": "The birdwatcher used ______ to spot rare species.",
-            "option": "binoculars",
-            "chinese": "双筒望远镜"
-        },
-        {
-            "sentence": "The artist ______ the sculpture from marble.",
-            "option": "carved",
-            "chinese": "雕刻"
-        },
-        {
-            "sentence": "The medieval ______ stood atop the hill.",
-            "option": "castle",
-            "chinese": "城堡"
-        },
-        {
-            "sentence": "The ______ forest was difficult to navigate.",
-            "option": "dense",
-            "chinese": "密集的"
-        },
-        {
-            "sentence": "The ______ of his voice filled the canyon.",
-            "option": "echo",
-            "chinese": "回声"
-        },
-        {
-            "sentence": "Her ______ with the subject made her an expert.",
-            "option": "familiarity",
-            "chinese": "熟悉"
-        },
-        {
-            "sentence": "The students were ______ by the science demonstration.",
-            "option": "fascinated",
-            "chinese": "着迷的"
-        },
-        {
-            "sentence": "The dinosaur ______ was perfectly preserved.",
-            "option": "fossil",
-            "chinese": "化石"
-        },
-        {
-            "sentence": "The ______ of his work influenced generations.",
-            "option": "legacy",
-            "chinese": "遗产"
-        },
-        {
-            "sentence": "The ______ was filled with wildflowers.",
-            "option": "meadow",
-            "chinese": "草地"
-        },
-        {
-            "sentence": "A complex ______ of roads covered the city.",
-            "option": "network",
-            "chinese": "网络"
-        },
-        {
-            "sentence": "His childhood ______ stuck with him into adulthood.",
-            "option": "nickname",
-            "chinese": "昵称"
-        },
-        {
-            "sentence": "The ______ of light through the trees was beautiful.",
-            "option": "glow",
-            "chinese": "光辉"
-        }
+        // Academic/specialized terms (40 items)
+        {"sentence": "______ ancient texts.", "option": "deciphering", "chinese": "破译"},
+        {"sentence": "______ effects.", "option": "therapeutic", "chinese": "治疗的"},
+        {"sentence": "Theory ______.", "option": "validation", "chinese": "验证"},
+        {"sentence": "______ approach.", "option": "methodological", "chinese": "方法论的"},
+        {"sentence": "______ correlation.", "option": "significant", "chinese": "显著的"},
+        {"sentence": "Evidence ______.", "option": "accumulation", "chinese": "积累"},
+        {"sentence": "______ wire fence.", "option": "barbed", "chinese": "有刺的"},
+        {"sentence": "Birdwatching ______.", "option": "binoculars", "chinese": "双筒望远镜"},
+        {"sentence": "______ sculpture.", "option": "carved", "chinese": "雕刻"},
+        {"sentence": "Hilltop ______.", "option": "castle", "chinese": "城堡"},
+        {"sentence": "______ navigation.", "option": "dense", "chinese": "密集的"},
+        {"sentence": "Voice ______.", "option": "echo", "chinese": "回声"},
+        {"sentence": "______ with subject.", "option": "familiarity", "chinese": "熟悉"},
+        {"sentence": "______ students.", "option": "fascinated", "chinese": "着迷的"},
+        {"sentence": "Dinosaur ______.", "option": "fossil", "chinese": "化石"},
+        {"sentence": "Artist's ______.", "option": "legacy", "chinese": "遗产"},
+        {"sentence": "Flower ______.", "option": "meadow", "chinese": "草地"},
+        {"sentence": "Road ______.", "option": "network", "chinese": "网络"},
+        {"sentence": "Childhood ______.", "option": "nickname", "chinese": "昵称"},
+        {"sentence": "Sunlight ______.", "option": "glow", "chinese": "光辉"},
+        {"sentence": "______ texts.", "option": "account", "chinese": "记述"},
+        {"sentence": "______ contribution.", "option": "acknowledge", "chinese": "承认"},
+        {"sentence": "______ effort.", "option": "admirable", "chinese": "令人钦佩的"},
+        {"sentence": "______ appeal.", "option": "aesthetic", "chinese": "美学的"},
+        {"sentence": "______ preferred.", "option": "anonymity", "chinese": "匿名"},
+        {"sentence": "______ man.", "option": "balding", "chinese": "秃顶的"},
+        {"sentence": "Seat ______.", "option": "belt", "chinese": "安全带"},
+        {"sentence": "______ of wind.", "option": "blast", "chinese": "一阵"},
+        {"sentence": "Annual ______.", "option": "budget", "chinese": "预算"},
+        {"sentence": "War ______.", "option": "casualty", "chinese": "伤亡"},
+        {"sentence": "Scientific ______.", "option": "challenge", "chinese": "挑战"},
+        {"sentence": "______ situation.", "option": "chaotic", "chinese": "混乱的"},
+        {"sentence": "______ of data.", "option": "chunk", "chinese": "大块"},
+        {"sentence": "Cultural ______.", "option": "clash", "chinese": "冲突"},
+        {"sentence": "Head-on ______.", "option": "collision", "chinese": "碰撞"},
+        {"sentence": "Work ______.", "option": "commitment", "chinese": "承诺"},
+        {"sentence": "Research ______.", "option": "conclusion", "chinese": "结论"},
+        {"sentence": "______ hearing.", "option": "congressional", "chinese": "国会的"},
+        {"sentence": "Market ______.", "option": "crash", "chinese": "崩溃"},
+        {"sentence": "______ measures.", "option": "desperate", "chinese": "绝望的"}
     ]
 };
+             
 
         // Quiz state variables
         let userAnswers = {};
